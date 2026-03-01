@@ -39,3 +39,6 @@ Thumbs.db
 
 # Office temp files
 ~$*.docx
+
+# Auth json file
+src/data/authState.json
