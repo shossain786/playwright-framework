@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   globalSetup: './src/utils/globalSetup.ts',
+  globalTeardown: './src/utils/globalTeardown.ts',
   testDir: './tests',
   timeout: 30000,
   expect: {
