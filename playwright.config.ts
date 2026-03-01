@@ -15,6 +15,7 @@ export default defineConfig({
   reporter: [
     ['list'],
     ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['./src/utils/customReporter.ts'],
   ],
   use: {
     baseURL: process.env.BASE_URL || 'https://panjatan.netlify.app/',
