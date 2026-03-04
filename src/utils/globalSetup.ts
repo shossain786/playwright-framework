@@ -1,6 +1,7 @@
 import { chromium, FullConfig } from "@playwright/test";
 import { config } from "./config";
 import { logger } from "./logger";
+import { LoginPage } from "../pages/LoginPage";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -15,10 +16,9 @@ async function globalSetup(playwrightConfig: FullConfig): Promise<void> {
 
   try {
     logger.info("Logging in to save auth state...");
-    await page.goto(`${config.baseURL}`);
-    await page.locator("#username").fill(config.credentials.username);
-    await page.locator("#password").fill(config.credentials.password);
-    await page.locator("//button[.='Login']").click();
+    const loginPage = new LoginPage(page);
+    await loginPage.navigateToLogin();
+    await loginPage.login(config.credentials.username, config.credentials.password);
     await page.waitForLoadState('networkidle');
 
     await context.storageState({ path: AUTH_FILE });
