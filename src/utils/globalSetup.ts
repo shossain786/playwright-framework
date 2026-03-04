@@ -9,7 +9,7 @@ const AUTH_FILE = path.resolve(process.cwd(), "src/data/authState.json");
 async function globalSetup(playwrightConfig: FullConfig): Promise<void> {
   logger.info(`Running global setup for environment: ${config.environment}`);
 
-  const browser = await chromium.launch({ headless: false });
+  const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext();
   const page = await context.newPage();
 
