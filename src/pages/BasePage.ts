@@ -9,7 +9,7 @@ export class BasePage {
     }
 
     async navigate(path:string = ''): Promise<void> {
-        await this.page.goto(`${config.baseURL}/${path}`)
+        await this.page.goto(`${config.baseURL.replace(/\/$/, '')}/${path}`)
     }
 
     async waitForPageLoad(): Promise<void> {

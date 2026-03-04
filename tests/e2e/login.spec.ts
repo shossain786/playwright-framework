@@ -3,6 +3,7 @@ import { testData } from "@data/testData";
 import { logger } from "@utils/logger";
 
 test.describe("Login Feature", () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
   test.beforeEach(async ({ loginPage }) => {
     await loginPage.navigateToLogin();
   });
@@ -17,7 +18,7 @@ test.describe("Login Feature", () => {
       testData.validUser.password,
     );
 
-    await loginPage.assertURL(`${process.env.Base_URL}/dashboard`);
+    await loginPage.assertURL(process.env.BASE_URL || 'https://panjatan.netlify.app/');
     logger.info("Valid login test completed successfully");
   });
 

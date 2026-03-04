@@ -42,3 +42,4 @@ Thumbs.db
 
 # Auth json file
 src/data/authState.json
+.claude/

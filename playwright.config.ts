@@ -1,10 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as fs from 'fs';
 
 export default defineConfig({
   globalSetup: './src/utils/globalSetup.ts',
   globalTeardown: './src/utils/globalTeardown.ts',
   testDir: './tests',
-  timeout: 30000,
+  timeout: 10000,
   expect: {
     timeout: 5000,
   },
@@ -19,11 +20,11 @@ export default defineConfig({
   ],
   use: {
     baseURL: process.env.BASE_URL || 'https://panjatan.netlify.app/',
-    headless: true,
+    headless: false,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     trace: 'retain-on-failure',
-    storageState: 'src/data/authState.json',
+    storageState: fs.existsSync('src/data/authState.json') ? 'src/data/authState.json' : undefined,
   },
   projects: [
     {

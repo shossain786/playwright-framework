@@ -11,12 +11,12 @@ export class LoginPage extends BasePage {
     super(page);
     this.usernameInput = page.locator("#username");
     this.passwordInput = page.locator("#password");
-    this.errorMessage = page.locator('[data-testid="error-message"]');
-    this.loginButton = page.locator("#login-button");
+    this.errorMessage = page.locator('#loginAlert');
+    this.loginButton = page.locator("//button[.='Login']");
   }
 
   async navigateToLogin(): Promise<void> {
-    await this.navigate("login");
+    await this.navigate("");
     await this.waitForPageLoad();
   }
 

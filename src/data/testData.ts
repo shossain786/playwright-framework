@@ -22,7 +22,7 @@ export const testData = {
     },
   },
   errorMessages: {
-    invalidCredentials: 'Invalid username or password',
+    invalidCredentials: 'Invalid username and password! Please check your credentials.',
     emptyUsername: 'Username is required',
     emptyPassword: 'Password is required',
   },
